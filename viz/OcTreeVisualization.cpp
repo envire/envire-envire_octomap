@@ -155,5 +155,5 @@ void OcTreeVisualization::updateDataIntern(boost::shared_ptr<octomap::AbstractOc
     reloadTree();
 }
 
-//Macro that makes this plugin loadable in ruby, this is optional.
-VizkitQtPlugin(OcTreeVisualization)
+VizkitQtPluginHeaderDecls(OcTreeVisualization);
+VizkitQtPluginImpl(OcTreeVisualization);
