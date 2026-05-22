@@ -1,5 +1,8 @@
-# Need to find both Qt4 and QGLViewer if the QQL support is to be built
-FIND_PACKAGE(Qt4 COMPONENTS QtCore QtXml QtOpenGL QtGui)
+# Need to find both Qt and QGLViewer if the QGL support is to be built
+FIND_PACKAGE(Qt5 QUIET COMPONENTS Core Xml OpenGL Gui)
+if(NOT Qt5_FOUND)
+  FIND_PACKAGE(Qt4 COMPONENTS QtCore QtXml QtOpenGL QtGui)
+endif()
 
 FIND_PATH(QGLVIEWER_INCLUDE_DIR qglviewer.h
     /usr/include/QGLViewer
@@ -10,7 +13,7 @@ FIND_PATH(QGLVIEWER_INCLUDE_DIR qglviewer.h
   )
 
 find_library(QGLVIEWER_LIBRARY_RELEASE
-  NAMES qglviewer-qt4 qglviewer QGLViewer QGLViewer2
+  NAMES QGLViewer-qt5 qglviewer-qt4 qglviewer QGLViewer QGLViewer2
   PATHS /usr/lib
         /usr/local/lib
         /opt/local/lib
